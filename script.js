@@ -48,7 +48,7 @@ function blow(){
 
 function stop(){
     clearInterval(timer)
-
+    timer=null
     if(isBlown) return
 
     progress=0
@@ -60,6 +60,14 @@ function stop(){
 
 }
 
+btn.addEventListener("pointerdown", start);
+btn.addEventListener("pointerup", stop);
+btn.addEventListener("pointerleave", stop);
 
-btn.addEventListener('mousedown',start)
-btn.addEventListener('mouseup',stop)
+btn.addEventListener("click", () => {
+  if (!isBlown) {
+    progress = 100;
+    blow();
+  }
+});
+
